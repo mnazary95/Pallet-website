@@ -257,66 +257,22 @@ function validateForm() {
     return isFormValid;
 }
 
-// Form submission
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Validate form
+// Form submission - validates then lets Netlify handle the submission
+contactForm.addEventListener('submit', (e) => {
+    // Validate form before submission
     if (!validateForm()) {
+        e.preventDefault();
         showFormMessage('Please correct the errors above', 'error');
         return;
     }
 
-    // Show loading state
+    // Show loading state while Netlify processes the form
     const submitBtn = contactForm.querySelector('.btn-submit');
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
 
-    // Hide previous messages
-    formMessage.className = 'form-message';
-    formMessage.textContent = '';
-
-    try {
-        // Get form data
-        const formData = new FormData(contactForm);
-
-        // Submit to Formspree (replace YOUR_FORM_ID with actual Formspree form ID)
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            // Success
-            showFormMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-            contactForm.reset();
-
-            // Reset form groups
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
-            });
-        } else {
-            // Error from server
-            const data = await response.json();
-            if (data.errors) {
-                const errorMessages = data.errors.map(error => error.message).join(', ');
-                showFormMessage(`Error: ${errorMessages}`, 'error');
-            } else {
-                showFormMessage('Oops! There was a problem sending your message. Please try again.', 'error');
-            }
-        }
-    } catch (error) {
-        // Network error or other issues
-        console.error('Form submission error:', error);
-        showFormMessage('Oops! There was a problem sending your message. Please try again or contact us directly by phone.', 'error');
-    } finally {
-        // Remove loading state
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-    }
+    // Let the form submit naturally to Netlify
+    // Netlify will redirect to /success.html as specified in the form action
 });
 
 // Show form message
