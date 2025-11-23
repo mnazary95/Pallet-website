@@ -1406,3 +1406,14 @@ address {
     outline: 2px solid var(--accent-teal);
     outline-offset: 2px;
 }
+
+
+/* Service Card Image Uniform Sizing */
+.service-card img {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+}
