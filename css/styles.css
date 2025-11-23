@@ -714,6 +714,11 @@ section {
     color: var(--text-secondary);
 }
 
+.hours-row.closed span:last-child {
+    color: #ef4444;
+    font-weight: 600;
+}
+
 .location-map {
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -817,6 +822,22 @@ section {
 
 .checkbox-options .checkbox-label {
     width: fit-content;
+}
+
+.checkbox-options-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-options-horizontal .checkbox-label {
+    flex: 1 1 auto;
+    min-width: 200px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
 }
 
 .form-group input,
@@ -1254,6 +1275,14 @@ address {
     .form-row {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+
+    .checkbox-options-horizontal {
+        flex-direction: column;
+    }
+
+    .checkbox-options-horizontal .checkbox-label {
+        min-width: auto;
     }
 
     .contact-form {
