@@ -135,13 +135,23 @@ const formMessage = document.getElementById('formMessage');
 
 // Form field validation rules
 const validationRules = {
-    name: {
+    firstName: {
         required: true,
         minLength: 2,
         pattern: /^[a-zA-Z\s'-]+$/,
         errorMessages: {
-            required: 'Please enter your name',
-            minLength: 'Name must be at least 2 characters',
+            required: 'Please enter your first name',
+            minLength: 'First name must be at least 2 characters',
+            pattern: 'Please enter a valid name'
+        }
+    },
+    lastName: {
+        required: true,
+        minLength: 2,
+        pattern: /^[a-zA-Z\s'-]+$/,
+        errorMessages: {
+            required: 'Please enter your last name',
+            minLength: 'Last name must be at least 2 characters',
             pattern: 'Please enter a valid name'
         }
     },
@@ -163,18 +173,18 @@ const validationRules = {
             minLength: 'Phone number must be at least 10 digits'
         }
     },
-    service: {
+    company: {
         required: true,
         errorMessages: {
-            required: 'Please select a service'
+            required: 'Please enter your company name'
         }
     },
-    message: {
+    postalCode: {
         required: true,
-        minLength: 10,
+        pattern: /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/,
         errorMessages: {
-            required: 'Please enter a message',
-            minLength: 'Message must be at least 10 characters'
+            required: 'Please enter your postal code',
+            pattern: 'Please enter a valid Canadian postal code'
         }
     }
 };
