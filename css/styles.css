@@ -719,6 +719,16 @@ section {
     font-weight: 600;
 }
 
+.weekend-notice {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fee2e2;
+    border-radius: var(--radius-md);
+    color: #991b1b;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
 .location-map {
     border-radius: var(--radius-lg);
     overflow: hidden;
